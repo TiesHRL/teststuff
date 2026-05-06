@@ -1,96 +1,75 @@
-<!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b3d2e" />
+    <title>Sports Stream Finder — Rugby & Cricket</title>
+    <meta
+      name="description"
+      content="Personal, ad-free finder for rugby and cricket fixtures with your own curated stream links."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E%F0%9F%8F%89%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Sports Stream Finder</h1>
+      <p class="tagline">Rugby &amp; cricket fixtures + your own stream links. No ads, no tracking.</p>
+    </header>
 
-<html>
-<body>
+    <nav class="filters" aria-label="Filters">
+      <div class="filter-group" role="radiogroup" aria-label="Sport">
+        <button type="button" class="chip is-active" data-sport="all">All sports</button>
+        <button type="button" class="chip" data-sport="Rugby">Rugby</button>
+        <button type="button" class="chip" data-sport="Cricket">Cricket</button>
+      </div>
+      <div class="filter-group" role="radiogroup" aria-label="Window">
+        <button type="button" class="chip is-active" data-window="7">Next 7 days</button>
+        <button type="button" class="chip" data-window="1">Today</button>
+        <button type="button" class="chip" data-window="14">Next 14 days</button>
+      </div>
+      <input
+        id="search"
+        type="search"
+        placeholder="Search team, league, venue…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search"
+      />
+    </nav>
 
-    <h1 style="font-size:10vw">Floating Farm Pick</h1>
+    <main class="layout">
+      <section id="fixtures" class="fixtures" aria-busy="true" aria-live="polite">
+        <p class="status">Loading fixtures…</p>
+      </section>
 
+      <aside class="sidebar" aria-label="Always-on channels">
+        <h2>Channels &amp; sources</h2>
+        <p class="muted">Edit <code>sources.json</code> to add your own.</p>
+        <ul id="sources" class="sources"></ul>
+      </aside>
+    </main>
 
-    <table id="rid_1" border="1">
-    <tr>
-	<td>Rid</td>
-        <td>Bedrijf</td>
-        <td>Product</td>
-        <td>Hoeveeheid</td>
-	<td>Check</td>
-	<td>Gelevered</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Gorillas Gouvernestraat</td>
-	<td>Melk</td>
-	<td>No_melk</td>
-        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
-        <td><input form="form1" type="number" value="No_melk" /></td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Gorillas Gouvernestraat</td>
-	<td>Stand</td>
-	<td>No_stand</td>
-        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
-        <td><input form="form1" type="number" value="No_stand" /></td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Gorillas Gouvernestraat</td>
-	<td>Melk</td>
-	<td>No_eieren</td>
-        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
-        <td><input form="form1" type="number" value="No_eieren" /></td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Gorillas Gouvernestraat</td>
-	<td>Karnemelk Framboos</td>
-	<td>No_Framboos</td>
-        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
-        <td><input form="form1" type="text" value="No_Framboos" /></td>
-    </tr>
-</table>
-    <td><input form="form1" type="submit" value="Save" /></td>
-    <hr>
+    <section id="snippet-helper" class="snippet-helper" hidden>
+      <h2>Add a stream link</h2>
+      <p>
+        Copy the snippet below and paste it into <code>streams.json</code>
+        (commit via <a href="https://github.dev" rel="noopener">github.dev</a>
+        on iPad).
+      </p>
+      <pre id="snippet" aria-live="polite"></pre>
+      <button type="button" id="copy-snippet">Copy</button>
+    </section>
 
-    <table id="rid2" border="1">
-        <tr>
-            <td>Rid</td>
-            <td>Bedrijf</td>
-            <td>Product</td>
-            <td>Hoeveeheid</td>
-            <td>Check</td>
-            <td>Gelevered</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Gorillas Gouvernestraat</td>
-            <td>Stand</td>
-            <td>No_stand</td>
-            <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
-            <td><input form="form1" type="number" value="No_stand" /></td>
-        </tr>
-    </table>
-    <script>
-        for (var i = 0; i < array.length; i++) {
-            // create a new row
-            var newRow = table.insertRow(table.length);
-            for (var j = 0; j < array[i].length; j++) {
-                // create a new cell
-                var cell = newRow.insertCell(j);
+    <footer class="foot">
+      <p>
+        Static site, no analytics. Source on
+        <a id="repo-link" href="#" rel="noopener">GitHub</a>. Old farm form
+        archived at <a href="archive/farm-delivery.html">/archive/</a>.
+      </p>
+    </footer>
 
-                // add value to the cell
-                cell.innerHTML = array[i][j];
-            }
-        }
-    </script>
-    <table>
-        <tr>
-            <td><form id="form2"><input type="hidden" name="id" value="1" /></form></td>
-            <td><input form="form2" type="text" name="name" value="Name" /></td>
-            <td><input form="form2" type="text" name="description" value="Description" /></td>
-            <td><input form="form2" type="submit" value="Save" /></td>
-        </tr>
-    </table>
-
-</body>
+    <script type="module" src="app.js"></script>
+  </body>
 </html>

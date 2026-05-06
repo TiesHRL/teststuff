@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html>
+<body>
+
+    <h1 style="font-size:10vw">Floating Farm Pick</h1>
+
+
+    <table id="rid_1" border="1">
+    <tr>
+	<td>Rid</td>
+        <td>Bedrijf</td>
+        <td>Product</td>
+        <td>Hoeveeheid</td>
+	<td>Check</td>
+	<td>Gelevered</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Gorillas Gouvernestraat</td>
+	<td>Melk</td>
+	<td>No_melk</td>
+        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
+        <td><input form="form1" type="number" value="No_melk" /></td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Gorillas Gouvernestraat</td>
+	<td>Stand</td>
+	<td>No_stand</td>
+        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
+        <td><input form="form1" type="number" value="No_stand" /></td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Gorillas Gouvernestraat</td>
+	<td>Melk</td>
+	<td>No_eieren</td>
+        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
+        <td><input form="form1" type="number" value="No_eieren" /></td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Gorillas Gouvernestraat</td>
+	<td>Karnemelk Framboos</td>
+	<td>No_Framboos</td>
+        <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
+        <td><input form="form1" type="text" value="No_Framboos" /></td>
+    </tr>
+</table>
+    <td><input form="form1" type="submit" value="Save" /></td>
+    <hr>
+
+    <table id="rid2" border="1">
+        <tr>
+            <td>Rid</td>
+            <td>Bedrijf</td>
+            <td>Product</td>
+            <td>Hoeveeheid</td>
+            <td>Check</td>
+            <td>Gelevered</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Gorillas Gouvernestraat</td>
+            <td>Stand</td>
+            <td>No_stand</td>
+            <td><form id="form1"><input form="form1" type="checkbox" name="gelevered" /></td>
+            <td><input form="form1" type="number" value="No_stand" /></td>
+        </tr>
+    </table>
+    <script>
+        for (var i = 0; i < array.length; i++) {
+            // create a new row
+            var newRow = table.insertRow(table.length);
+            for (var j = 0; j < array[i].length; j++) {
+                // create a new cell
+                var cell = newRow.insertCell(j);
+
+                // add value to the cell
+                cell.innerHTML = array[i][j];
+            }
+        }
+    </script>
+    <table>
+        <tr>
+            <td><form id="form2"><input type="hidden" name="id" value="1" /></form></td>
+            <td><input form="form2" type="text" name="name" value="Name" /></td>
+            <td><input form="form2" type="text" name="description" value="Description" /></td>
+            <td><input form="form2" type="submit" value="Save" /></td>
+        </tr>
+    </table>
+
+</body>
+</html>

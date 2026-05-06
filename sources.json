@@ -1,0 +1,27 @@
+[
+  {
+    "label": "World Rugby (YouTube)",
+    "url": "https://www.youtube.com/@WorldRugby",
+    "note": "Highlights, replays, occasional live coverage."
+  },
+  {
+    "label": "ICC (YouTube)",
+    "url": "https://www.youtube.com/@ICC",
+    "note": "International Cricket Council — clips and free events."
+  },
+  {
+    "label": "Six Nations Rugby (YouTube)",
+    "url": "https://www.youtube.com/@SixNationsRugby",
+    "note": "Highlights and post-match content."
+  },
+  {
+    "label": "ESPN Cricinfo",
+    "url": "https://www.espncricinfo.com/",
+    "note": "Schedules, scores, ball-by-ball."
+  },
+  {
+    "label": "Ultimate Rugby",
+    "url": "https://www.ultimaterugby.com/fixtures",
+    "note": "Global rugby fixtures by competition."
+  }
+]

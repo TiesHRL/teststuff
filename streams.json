@@ -1,0 +1,11 @@
+[
+  {
+    "_comment": "One example entry. The 'match' string is matched fuzzily against fixture titles and team names. 'date' is YYYY-MM-DD (UTC). 'sport' is Rugby or Cricket. Add as many entries as you like.",
+    "sport": "Rugby",
+    "date": "2026-05-03",
+    "match": "Example Home vs Example Away",
+    "links": [
+      { "label": "Replace this URL", "url": "https://example.com/your-stream" }
+    ]
+  }
+]
