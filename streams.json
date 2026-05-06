@@ -9,3 +9,15 @@
     ]
   }
 ]
+[
+  {
+    "_comment": "Bayern PSG",
+    "sport": "Rugby",
+    "date": "2026-05-06",
+    "match": "Bayern vs PSG",
+    "links": [
+      { "label": "URL", "url": "https://dlstreams.com/casting/stream-31.php" }
+    ]
+  }
+]
+
