@@ -6,6 +6,7 @@ const state = {
   sport: "all",
   days: 7,
   query: "",
+  myLinksSport: "all",
   fixtures: [],
   streams: [],
   sources: [],
@@ -19,6 +20,8 @@ const el = {
   snippet: document.getElementById("snippet"),
   copySnippet: document.getElementById("copy-snippet"),
   repoLink: document.getElementById("repo-link"),
+  myLinksList: document.getElementById("my-links-list"),
+  myLinksCount: document.getElementById("my-links-count"),
 };
 
 init();
@@ -28,6 +31,7 @@ async function init() {
   wireSearch();
   wireSnippet();
   wireRepoLink();
+  wireMyLinksFilter();
 
   const [streams, sources, fixtures] = await Promise.all([
     loadJSON("streams.json", []),
@@ -41,6 +45,7 @@ async function init() {
 
   renderSources();
   renderFixtures();
+  renderMyLinks();
 }
 
 async function loadJSON(path, fallback) {
@@ -79,6 +84,18 @@ function wireSearch() {
   el.search.addEventListener("input", () => {
     state.query = el.search.value.trim().toLowerCase();
     renderFixtures();
+  });
+}
+
+function wireMyLinksFilter() {
+  document.querySelectorAll(".chip[data-mylinks-sport]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".chip[data-mylinks-sport]")
+        .forEach((b) => b.classList.toggle("is-active", b === btn));
+      state.myLinksSport = btn.dataset.mylinksSport;
+      renderMyLinks();
+    });
   });
 }
 
@@ -121,6 +138,61 @@ function renderSources() {
         )}</a><br><small class="muted">${escape(s.note || "")}</small></li>`,
     )
     .join("");
+}
+
+function renderMyLinks() {
+  const entries = state.streams
+    .filter((e) => Array.isArray(e.links) && e.links.length > 0)
+    .filter((e) =>
+      state.myLinksSport === "all"
+        ? true
+        : (e.sport || "").toLowerCase() === state.myLinksSport.toLowerCase(),
+    )
+    .slice()
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+
+  const totalLinks = entries.reduce((n, e) => n + e.links.length, 0);
+  el.myLinksCount.textContent = entries.length
+    ? `${entries.length} entr${entries.length === 1 ? "y" : "ies"} · ${totalLinks} link${totalLinks === 1 ? "" : "s"}`
+    : "";
+
+  if (!entries.length) {
+    el.myLinksList.innerHTML = `<p class="my-link-empty">Nothing in <code>streams.json</code> yet${
+      state.myLinksSport === "all" ? "" : ` for ${state.myLinksSport}`
+    }.</p>`;
+    return;
+  }
+
+  el.myLinksList.innerHTML = entries.map(renderMyLinkEntry).join("");
+}
+
+function renderMyLinkEntry(entry) {
+  const sport = entry.sport || "Unknown";
+  const sportClass = sport.toLowerCase();
+  const date = entry.date || "no date";
+  const match = entry.match || "(no match name)";
+  const links = entry.links
+    .map(
+      (l) =>
+        `<a class="link-btn" href="${escape(l.url)}" target="_blank" rel="noopener">${escape(
+          l.label || l.url,
+        )}<span class="arrow">↗</span></a>`,
+    )
+    .join("");
+
+  return `
+    <article class="my-link">
+      <div class="my-link-head">
+        <h3 class="my-link-title">${escape(match)}</h3>
+        <span class="sport-tag ${sportClass}">${escape(sport)}</span>
+      </div>
+      <div class="my-link-meta">
+        <span>${escape(date)}</span>
+        <span>${entry.links.length} link${entry.links.length === 1 ? "" : "s"}</span>
+      </div>
+      <div class="links">${links}</div>
+    </article>
+  `;
 }
 
 function renderFixtures() {

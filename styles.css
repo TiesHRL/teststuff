@@ -49,6 +49,25 @@ code {
   margin: 6px 0 0;
   color: var(--ink-dim);
 }
+.jump {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.jump a {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.jump a:hover, .jump a:focus { border-color: var(--accent); }
 
 .filters {
   display: flex;
@@ -225,6 +244,65 @@ code {
   background: var(--panel-2);
   border: 1px solid var(--border);
   border-radius: 8px;
+}
+
+.my-links {
+  max-width: 1100px;
+  margin: 8px auto 24px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.my-links-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.my-links-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.my-links-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 14px;
+}
+.my-links-list {
+  display: grid;
+  gap: 10px;
+}
+.my-link {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+.my-link-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.my-link-title { margin: 0; font-size: 1rem; }
+.my-link-meta {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.my-link .links { margin-top: 2px; }
+.my-link-empty {
+  color: var(--ink-dim);
+  font-style: italic;
+  padding: 14px;
+  text-align: center;
 }
 
 .snippet-helper {

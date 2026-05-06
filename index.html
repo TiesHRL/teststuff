@@ -16,6 +16,11 @@
     <header class="topbar">
       <h1>Sports Stream Finder</h1>
       <p class="tagline">Rugby &amp; cricket fixtures + your own stream links. No ads, no tracking.</p>
+      <nav class="jump" aria-label="Jump to section">
+        <a href="#fixtures">Fixtures</a>
+        <a href="#my-links">Your links</a>
+        <a href="#sources-section">Channels</a>
+      </nav>
     </header>
 
     <nav class="filters" aria-label="Filters">
@@ -44,12 +49,29 @@
         <p class="status">Loading fixtures…</p>
       </section>
 
-      <aside class="sidebar" aria-label="Always-on channels">
+      <aside id="sources-section" class="sidebar" aria-label="Always-on channels">
         <h2>Channels &amp; sources</h2>
         <p class="muted">Edit <code>sources.json</code> to add your own.</p>
         <ul id="sources" class="sources"></ul>
       </aside>
     </main>
+
+    <section id="my-links" class="my-links" aria-label="Your saved links">
+      <div class="my-links-head">
+        <h2>Your saved links</h2>
+        <span id="my-links-count" class="muted"></span>
+      </div>
+      <p class="muted">
+        Everything currently in <code>streams.json</code>. Edit that file to
+        add, remove, or fix links.
+      </p>
+      <div class="my-links-filter" role="radiogroup" aria-label="Filter saved links">
+        <button type="button" class="chip is-active" data-mylinks-sport="all">All</button>
+        <button type="button" class="chip" data-mylinks-sport="Rugby">Rugby</button>
+        <button type="button" class="chip" data-mylinks-sport="Cricket">Cricket</button>
+      </div>
+      <div id="my-links-list" class="my-links-list"></div>
+    </section>
 
     <section id="snippet-helper" class="snippet-helper" hidden>
       <h2>Add a stream link</h2>
